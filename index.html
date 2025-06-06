@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亿邹美育绘馆</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <style>
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .text-5xl{
+            font-size: 180px;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="images/logo.png" alt="亿邹美育绘馆" class="w-10 h-10">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span class="text-xxl font-bold text-gray-900">亿邹美育绘馆</span>
+            </div>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-sm font-medium text-gray-600 hover:text-purple-600">首页</a>
+                <a href="#courses" class="text-sm font-medium text-gray-600 hover:text-purple-600">课程体系</a>
+                <a href="#stages" class="text-sm font-medium text-gray-600 hover:text-purple-600">阶段介绍</a>
+                <a href="#environment" class="text-sm font-medium text-gray-600 hover:text-purple-600">教学环境</a>
+                <a href="#teachers" class="text-sm font-medium text-gray-600 hover:text-purple-600">师资团队</a>
+                <a href="#works" class="text-sm font-medium text-gray-600 hover:text-purple-600">学员作品</a>
+                <a href="#schedule" class="text-sm font-medium text-gray-600 hover:text-purple-600">课程表</a>
+                <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-purple-600">预约咨询</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+<!-- Music Toggle Button -->
+                <button id="musicToggle" class="text-gray-600 focus:outline-none ml-4">
+                    <svg id="musicOnIcon" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    </svg>
+                    <svg id="musicOffIcon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 极12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                    </svg>
+                </button>
+            <button id="menuToggle" class="md:hidden text-gray-600">
+                <svg id="menuIcon" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white px-4 pb-4">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="text-sm font-medium py-2 text-gray-600 hover:text-purple-600">首页</a>
+                <a href="#courses" class="text-sm font-medium py-2 text-gray-600 hover:text-purple-600">课程体系</a>
+                <a href="#stages" class="text-sm font-medium py-2 text-gray-600 hover:text-purple-600">阶段介绍</a>
+                <a href="#environment" class="text-sm font-medium py-2 text-gray-600 hover:text-purple-600">教学环境</a>
+                <a href="#teachers" class="text-sm font-medium py-2 text-gray-600 hover:text-purple-600">师资团队</a>
+                <a href="#works" class="text-sm font-medium py-2 text-gray-600 hover:text-purple-600">学员作品</a>
+                <a href="#schedule" class="text-sm font-medium py-2 text-gray-600 hover:text-purple-600">课程表</a>
+                <a href="#contact" class="text-sm font-medium py-2 text-gray-600 hover:text-purple-600">预约咨询</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h1 class="text-5xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                        亿邹美育绘馆<br />
+                        <span class="text-purple-600">让艺术启迪心灵</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8">
+                        专注艺术教育10年，培养超过5000名学员<br />
+                        专业师资团队，定制化教学方案
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            预约试听
+                        </button>
+                        <button class="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-medium hover:bg-[#e5e7eb] transition-colors">
+                            课程详情
+                        </button>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative">
+                        <img 
+                            src="images/classintro.jpg"
+                            alt="艺术教育场景" 
+                            class="rounded-xl shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500"
+                        />
+                        <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                        <div class="absolute -top-6 -right-6 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">课程体系</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    涵盖各年龄段的艺术课程，采用阶梯式教学体系，帮助学员循序渐进提升艺术素养
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="images/class1.png" alt="少儿绘画" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 text-sm">4-12岁儿童艺术启蒙课程，培养色彩感知与创造力</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">少儿绘画</h3>
+                        <p class="text-gray-600 mb-4 h-16">4-12岁儿童艺术启蒙课程，培养色彩感知与创造力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">¥1980/学期</span>
+                            <button class="text-purple-600 font-medium hover:text-purple-800 flex items-center group">
+                                立即咨询
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="images/class2.jpg" alt="专业素描" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 text-sm">12岁以上素描系统训练，掌握造型与光影表现</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">专业素描</h3>
+                        <p class="text-gray-600 mb-4 h-16">12岁以上素描系统训练，掌握造型与光影表现</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">¥2280/学期</span>
+                            <button class="text-purple-600 font-medium hover:text-purple-800 flex items-center group">
+                                立即咨询
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="images/class.jpg" alt="书法" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 text-sm">传统书法临摹与创作，培养文化素养</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">书法</h3>
+                        <p class="text-gray-600 mb-4 h-16">传统书法临摹与创作，培养文化素养</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">¥2280/学期</span>
+                            <button class="text-purple-600 font-medium hover:text-purple-800 flex items-center group">
+                                立即咨询
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="images/stu1.jpg" alt="手作DIY" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 text-sm">手工制作体验课程，培养动手能力与创意</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">手作DIY</h3>
+                        <p class="text-gray-600 mb-4 h-16">手工制作体验课程，培养动手能力与创意</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">¥2280/学期</span>
+                            <button class="text-purple-600 font-medium hover:text-purple-800 flex items-center group">
+                                立即咨询
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="images/stu2.jpg" alt="烘焙" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 text-sm">从零开始学习烘焙技巧与创意呈现</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">烘焙</h3>
+                        <p class="text-gray-600 mb-4 h-16">从零开始学习烘焙技巧与创意呈现</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">¥2280/学期</span>
+                            <button class="text-purple-600 font-medium hover:text-purple-800 flex items-center group">
+                                立咨询
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="images/stu3.jpg" alt="陶艺" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <p class="text-white p-4 text-sm">陶艺制作与创意设计，感受立体艺术魅力</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">陶艺</h3>
+                        <p class="text-gray-600 mb-4 h-16">陶艺制作与创意设计，感受立体艺术魅力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-purple-600 font-bold">¥2580/学期</span>
+                            <button class="text-purple-600 font-medium hover:text-purple-800 flex items-center group">
+                                立即咨询
+                                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Teaching Environment Section (New) -->
+    <section id="environment" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">教学环境</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    专业艺术教室，配备完善教学设施，营造沉浸式艺术学习氛围
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="group relative overflow-hidden rounded-lg h-64 md:h-80">
+                    <img 
+                        src="images/js6.png"
+                        alt="宽敞明亮的画室" 
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-6 text-sm">宽敞明亮的画室，配备专业画架与自然采光</p>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-lg h-64 md:h-80">
+                    <img 
+                        src="images/js7.png"
+                        alt="学生作品展示区" 
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-6 text-sm">学生作品展示区，激励创作灵感与成长见证</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative overflow-hidden rounded-lg h-40">
+                    <img 
+                        src="images/js3.png"
+                        alt="专业画架" 
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">专业画架</p>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-lg h-40">
+                    <img 
+                        src="images/js4.png"
+                        alt="美术工具" 
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">美术工具</p>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-lg h-40">
+                    <img 
+                        src="images/js5.png" 
+                        alt="烘焙教室" 
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">烘焙教室</p>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-lg h-40">
+                    <img 
+                        src="images/js2.png" 
+                        alt="陶艺工作区" 
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">陶艺工作区</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Stages Section -->
+    <section id="stages" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">课程体系阶段介绍</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    分阶段教学体系，科学匹配不同年龄段与学习需求，系统提升艺术素养
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xl font-bold mb-4">1</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">启蒙阶段</h3>
+                    <p class="text-gray-600">4-6岁儿童基础艺术认知，通过趣味涂鸦、简单手工培养艺术兴趣</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xl font-bold mb-4">2</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">基础阶段</h3>
+                    <p class="text-gray-600">7-12岁系统学习简笔画、水彩画、基础素描，建立美术基础</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xl font-bold mb-4">3</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">进阶阶段</h3>
+                    <p class="text-gray-600">13-18岁深入学习素描、色彩构成、创作技法，准备艺术升学</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xl font-bold mb-4">4</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">专业阶段</h3>
+                    <p class="text-gray-600">高考美术强化训练，包含素描头像、色彩静物、速写专项突破</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xl font-bold mb-4">5</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">成人阶段</h3>
+                    <p class="text-gray-600">油画、水彩、书法等成人兴趣课程，提供个性化指导</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-xl font-bold mb-4">6</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">特色阶段</h3>
+                    <p class="text-gray-600">手作DIY、陶艺、烘焙等特色课程，融合多领域艺术表现</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section id="teachers" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">师资团队</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    由资深艺术家和专业教师组成的教学团队，为学员提供专业指导
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <img src="images/t1.jpg" alt="宋方舟老师" class="w-full h-auto object-cover object-contain">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">宋方舟</h3>
+                        <p class="text-purple-600 font-medium mb-3">首席艺术导师</p>
+                        <p class="text-gray-600 text-sm">四川美术学院毕业，11年高考美术教学经验，持有高级教师资格证</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <img src="images/t2.jpg" alt="李琳老师" class="w-full h-auto object-cover object-contain">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">李琳</h3>
+                        <p class="text-purple-600 font-medium mb-3">研究生导师</p>
+                        <p class="text-gray-600 text-sm">重庆师范大学研究生，持有高级教师资格证，擅长青少年艺术培养</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <img src="images/t3.jpg" alt="邹轶老师" class="w-full h-auto object-cover object-contain">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">邹轶</h3>
+                        <p class="text-purple-600 font-medium mb-3">创始人</p>
+                        <p class="text-gray-600 text-sm">四川美术学院毕业，亿邹美育创办人，持有高级教师资格证</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <img src="images/t4.jpg" alt="廖维沙老师" class="w-full h-auto object-cover object-contain">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">廖维沙</h3>
+                        <p class="text-purple-600 font-medium mb-3">执行校长</p>
+                        <p class="text-gray-600 text-sm">长江师范学院毕业，重庆摄影家协会理事，10年教学管理经验</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <img src="images/t5.jpg" alt="程扬茗老师" class="w-full h-auto object-cover object-contain">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">程扬茗</h3>
+                        <p class="text-purple-600 font-medium mb-3">主教老师</p>
+                        <p class="text-gray-600 text-sm">7年美术教育经验，持有高级教师资格证</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <img src="images/t6.jpg" alt="赵远丽老师" class="w-full h-auto object-cover object-contain">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">赵远丽</h3>
+                        <p class="text-purple-600 font-medium mb-3">助教老师</p>
+                        <p class="text-gray-600 text-sm">7年教学经验，擅长基础教学与课堂管理</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <img src="images/t7.jpg" alt="陈宥含老师" class="w-full h-auto object-cover object-contain">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">陈宥含</h3>
+                        <p class="text-purple-600 font-medium mb-3">服装设计导师</p>
+                        <p class="text-gray-600 text-sm">重庆工商大学毕业，服装设计专业，持有高级教师资格证</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <img src="images/t8.jpg" alt="王记威老师" class="w-full h-auto object-cover object-contain">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">王记威</h3>
+                        <p class="text-purple-600 font-medium mb-3">资深助教</p>
+                        <p class="text-gray-600 text-sm">11年教学经验，专注青少年艺术辅导与作品集指导</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section id="works" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">学员作品</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    展示学员们的精彩创作，见证他们在艺术道路上的成长
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/stu1.jpg" alt="学员作品 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">学员姓名 - 作品名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/stu2.jpg" alt="学员作品 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">学员姓名 - 作品名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/stu3.jpg" alt="学员作品 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">学员姓名 - 作品名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/stu4.jpg" alt="学员作品 4" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">学员姓名 - 作品名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/work.jpg" alt="学员作品 5" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">学员姓名 - 作品名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/work1.jpg" alt="学员作品 6" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">学员姓名 - 作品名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/work7.jpg" alt="学员作品 7" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">学员姓名 - 作品名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/work3.jpg" alt="学员作品 8" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">学员姓名 - 作品名称</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Honor Section -->
+    <section id="honor" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">荣誉墙</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    展示学员获得的荣誉
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/honor.jpg" alt="荣誉 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">荣誉名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/honor1.jpg" alt="荣誉 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">荣誉名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/honor2.jpg" alt="荣誉 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">荣誉名称</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg">
+                    <img src="images/classroom3.jpg" alt="荣誉 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <p class="text-white p-4 text-sm">荣誉名称</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <div class="glass-card rounded-3xl overflow-hidden max-w-5xl mx-auto shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-0">
+                    <div class="p-10 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-800 to-yellow-600 opacity-10"></div>
+                        <h2 class="relative text-3xl font-bold text-yellow-400 mb-6">
+                            <span class="text-yellow-400">预约</span>您的艺术之旅
+                        </h2>
+                        <p class="relative text-black-300 mb-8">
+                            填写表单预约试听课程，我们将安排专业的艺术顾问与您联系
+                        </p>
+                        
+                        <form class="space极-y-5 relative">
+                            <div>
+                                <label class="block text-black-200 mb-2">姓名</label>
+                                <input type="text" class="glass-card w-full px-5 py-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="您的姓名">
+                            </div>
+                            <div>
+                                <label class="block text-black-200 mb-2">电话</label>
+                                <input type="tel" class="glass-card w-full px-5 py-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="联系电话">
+                            </div>
+                            <div>
+                                <label class="block text-black-200 mb-2">年龄</label>
+                                <input type="number" class="glass-card w-full px-5 py-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="学员年龄">
+                            </div>
+                            <div>
+                                <label class="block text-black-200 mb-2">课程兴趣</label>
+                                <select class="glass-card w-full px-5 py-3 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <option value="">请选择感兴趣的课程</option>
+                                    <option value="儿童">儿童创意美术 (4-8岁)</option>
+                                    <option value="少年">少年基础绘画 (9-12岁)</option>
+                                    <option value="素描">素描精修班 (10-16岁)</option>
+                                    <option value="油画">油画工作室 (16岁+)</option>
+                                    <option value="其他">其他艺术课程</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-yellow-600 to-yellow-800 hover:from-yellow-700 hover:to-yellow-900 text-white py-4 rounded-lg font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
+                                提交预约 <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="p-10 bg-gradient-to-b from-purple-900 to-indigo-900 flex flex-col">
+                        <div class="mb-10">
+                            <h3 class="text-xl font-bold text-white mb-4">校区资讯</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-yellow-400 mt-1.5 mr-3 text-lg"></i>
+                                    <div>
+                                        <h4 class="text-gray-200 font-medium">红星檀宫校区</h极4>
+                                        <p class="text-gray-400 text-sm">綦江区红星檀宫商业街二楼</p>
+                                        <p class="text-gray-400 text-sm">万达一号门斜对面</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-yellow-400 mt-1.5 mr-3 text-lg"></i>
+                                    <div>
+                                        <h4 class="text-gray-200 font-medium">通惠大道校区</h4>
+                                        <p class="text-gray-400 text-sm">綦江区通惠大道星月国际北区</p>
+                                        <p class="text-gray-400 text-sm">57号附7号（公交站牌背后）</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-yellow-400 mt-1.5 mr-3 text-lg"></i>
+                                    <div>
+                                        <h4 class="text-gray-200 font-medium">书香名都校区</h4>
+                                        <p class="text-gray-400 text-sm">綦江区书香名都小区旁</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto">
+                            <h3 class="text-xl font-bold text-white mb-4">联系信息</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone-alt text-yellow-400 mr-3 text-lg"></i>
+                                    <div>
+                                        <p class="text-gray-200">18680875115 (邹邹老师)</p>
+                                        <p class="text-gray-400 text-sm">周一至周日 9:00-20:00</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-yellow-400 mr-3 text-lg"></i>
+                                    <div>
+                                        <p class="text-gray-200">art@yizoumeiyu.com</p>
+                                        <p class="text-gray-400 text-sm">邮件咨询</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-4 mt-6">
+                                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-yellow-400 hover:bg-yellow-600 hover:text-white transition-colors">
+                                    <i class="fab fa-weixin"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-yellow-400 hover:bg-yellow-600 hover:text-white transition-colors">
+                                    <i class="fab fa-weibo"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-yellow-400 hover:bg-yellow-600 hover:text-white transition-colors">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="images/logo.png" alt="亿邹美育绘馆" class="w-10 h-10">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        <span class="text-lg font-bold text-white">亿邹美育绘馆</span>
+                    </div>
+                    <p class="text-sm">
+                        专注艺术教育10年，培养超过5000名学员<br>
+                        专业师资团队，定制化教学方案
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-purple-400 transition-colors">首页</a></li>
+                        <li><a href="#courses" class="hover:text-purple-400 transition-colors">课程体系</a></li>
+                        <li><a href="#stages" class="hover:text-purple-400 transition-colors">阶段介绍</a></li>
+                        <li><a href="#environment" class="hover:text-purple-400 transition-colors">教学环境</a></li>
+                        <li><a href="#teachers" class="hover:text-purple-400 transition-colors">师资团队</a></li>
+                        <li><a href="#works" class="hover:text-purple-400 transition-colors">学员作品</a></li>
+                        <li><a href="#schedule" class="hover:text-purple-400 transition-colors">课程表</a></li>
+                        <li><a href="#contact" class="hover:text-purple-400 transition-colors">预约咨询</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold mb-4">联系我们</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start space-x-2">
+                            <svg class="w-4 h-4 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <div>
+                                <p>重庆市綦江区亿邹美育绘馆</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <svg class="w-4 h-4 mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498A1 1 0 0121.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 01-7.126 3.814 11.874 11.874 0 01-8.62-4.37 4.168 4.168 0 00-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 01-1.894-1.05v.042a4.186 4.186 0 003.355 4.105 4.211 4.211 0 01-1.93.072A4.28 4.28 0 0013.14 16.4a8.362 8.362 0 01-6.132 1.715 11.82 11.82 0 006.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 002.087-2.165z" />
+                            </svg>
+                            <div>
+                                <p>18680875115（邹邹老师）</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold mb-4">营业时间</h3>
+                    <p class="text-sm">周一至周日 9:00 - 20:00</p>
+                    <div class="mt-4">
+                        <h4 class="text-sm font-medium text-white mb-2">订阅我们的资讯</h4>
+                        <div class="flex">
+                            <input type="email" placeholder="输入您的邮箱" class="flex-1 px-3 py-2 text-sm border border-gray-700 bg-gray-800 text-white placeholder-gray-400 focus:ring-1 focus:ring-purple-500 focus:border-purple-500 outline-none transition">
+                            <button class="bg-purple-600 text-white px-3 py-2 text-sm rounded-r-lg hover:bg-purple-700 transition-colors">
+                                订阅
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-6 text-sm text-center">
+                <p>© 2023 亿邹美育绘馆 版权所有 | 京ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+   
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="music/dancing-in-the-stardust-free-music-no-copyright-203603.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Music toggle functionality with IIFE to avoid redeclaration
+        (function() {
+            const music = document.getElementById('backgroundMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const musicOnIcon = document.getElementById('musicOnIcon');
+            const musicOffIcon = document.getElementById('musicOffIcon');
+            
+            // Initialize music state
+            let isMusicPlaying = true;
+            
+            musicToggle.addEventListener('click', () => {
+                isMusicPlaying = !isMusicPlaying;
+                
+                if (isMusicPlaying) {
+                    music.play();
+                    musicOnIcon.classList.remove('hidden');
+                    musicOffIcon.classList.add('hidden');
+                } else {
+                    music.pause();
+                    musicOnIcon.classList.add('hidden');
+                    musicOffIcon.classList.remove('hidden');
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+<!-- Background Music -->
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="music/dancing-in-the-stardust-free-music-no-copyright-203603.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Music toggle functionality
+        const music = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicOnIcon = document.getElementById('musicOnIcon');
+        const musicOffIcon = document.getElementById('musicOffIcon');
+        
+        // Initialize music state
+        let isMusicPlaying = true;
+        
+        musicToggle.addEventListener('click', () => {
+            isMusicPlaying = !isMusicPlaying;
+            
+            if (isMusicPlaying) {
+                music.play();
+                musicOnIcon.classList.remove('hidden');
+                musicOffIcon.classList.add('hidden');
+            } else {
+                music.pause();
+                musicOnIcon.classList.add('hidden');
+                musicOffIcon.classList.remove('hidden');
+            }
+        });
+    </script>
